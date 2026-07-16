@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Divider,
   Drawer,
@@ -18,6 +19,7 @@ import {
   ShoppingCart,
 } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -35,6 +37,7 @@ export default function Drawerr({
   typeDrawer,
   hideDrawer,
 }) {
+  const { selectedProducts } = useSelector((state) => state.cartt);
   const currentLocation = useLocation();
   const navigate = useNavigate();
   const theme = useTheme();
@@ -43,7 +46,7 @@ export default function Drawerr({
     {
       text: "Cart",
       icon: (
-        <StyledBadge badgeContent={3} color="secondary">
+        <StyledBadge badgeContent={selectedProducts.length} color="secondary">
           <ShoppingCart />
         </StyledBadge>
       ),
