@@ -10,17 +10,33 @@ export const CartSlice = createSlice({
   initialState,
   reducers: {
     addProduct: (state, action) => {
-      const productAndQuantity = {...action.payload, "quantity": 1}
+      const productAndQuantity = { ...action.payload, quantity: 1 };
       state.selectedProducts.push(productAndQuantity);
     },
     increaseQuantity: (state, action) => {
       const increaseProduct = state.selectedProducts.find((item) => {
         return item.id === action.payload.id;
-      })
+      });
       increaseProduct.quantity += 1;
     },
-    decreaseQuantity: (state, action) => {console.log("decrease");},
-    deleteProduct: (state, action) => {console.log("delete");},
+    decreaseQuantity: (state, action) => {
+      const decreaseProduct = state.selectedProducts.find((item) => {
+        return item.id === action.payload.id;
+      });
+      decreaseProduct.quantity -= 1;
+      if (decreaseProduct.quantity === 0) {
+        const newArr = state.selectedProducts.filter((item) => {
+          return item.id !== action.payload.id;
+        });
+        state.selectedProducts = newArr;
+      }
+    },
+    deleteProduct: (state, action) => {
+      const newArr = state.selectedProducts.filter((item) => {
+        return item.id !== action.payload.id;
+      });
+      state.selectedProducts = newArr;
+    },
   },
 });
 
