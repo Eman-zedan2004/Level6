@@ -5,6 +5,7 @@ import {
   Stack,
   Box,
   CircularProgress,
+  IconButton,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Card from "@mui/material/Card";
@@ -15,6 +16,16 @@ import { useGetProductByNameQuery } from "../redux/ProductAPI";
 import "./Home.css";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../redux/CartSlice";
+import { Add, Remove } from "@mui/icons-material";
+import { decreaseQuantity, increaseQuantity } from "../redux/CartSlice";
+import { styled, Badge } from "@mui/material";
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    backgroundColor: "#1976d2",
+    color: "#fff",
+  },
+}));
 
 export default function Home() {
   const { data, error, isLoading } = useGetProductByNameQuery("bulbasaur");
@@ -82,16 +93,43 @@ export default function Home() {
                 sx={{ justifyContent: "space-between" }}
                 disableSpacing
               >
-                <Button
-                  sx={{ textTransform: "capitalize", p: 1, lineHeight: 1.1 }}
-                  variant="contained"
-                  color="primary"
-                  onClick={() => {
-                    dispatch(addProduct(item));
-                  }}
-                >
-                  Add to cart
-                </Button>
+                {true ? (
+                  <div
+                    dir="rtl"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
+                    <IconButton
+                      sx={{ color: "#1976d2", ml: "10px" }}
+                      onClick={() => {
+                        dispatch(increaseQuantity(item));
+                      }}
+                    >
+                      <Add fontSize="small" />
+                    </IconButton>
+
+                    <StyledBadge badgeContent="1" color="secondary" />
+
+                    <IconButton
+                      sx={{ color: "#1976d2", mr: "10px" }}
+                      onClick={() => {
+                        dispatch(decreaseQuantity(item));
+                      }}
+                    >
+                      <Remove fontSize="small" />
+                    </IconButton>
+                  </div>
+                ) : (
+                  <Button
+                    sx={{ textTransform: "capitalize", p: 1, lineHeight: 1.1 }}
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                      dispatch(addProduct(item));
+                    }}
+                  >
+                    Add to cart
+                  </Button>
+                )}
 
                 <Typography
                   sx={{ mr: 1 }}
