@@ -13,7 +13,12 @@ export const CartSlice = createSlice({
       const productAndQuantity = {...action.payload, "quantity": 1}
       state.selectedProducts.push(productAndQuantity);
     },
-    increaseQuantity: (state, action) => {console.log("increase");},
+    increaseQuantity: (state, action) => {
+      const increaseProduct = state.selectedProducts.find((item) => {
+        return item.id === action.payload.id;
+      })
+      increaseProduct.quantity += 1;
+    },
     decreaseQuantity: (state, action) => {console.log("decrease");},
     deleteProduct: (state, action) => {console.log("delete");},
   },
