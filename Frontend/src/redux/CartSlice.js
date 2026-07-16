@@ -31,6 +31,10 @@ export const CartSlice = createSlice({
           return item.id !== action.payload.id;
         });
         state.selectedProducts = newArr;
+        const newArr2 = state.selectedProductsID.filter((item) => {
+          return item !== action.payload.id;
+        });
+        state.selectedProductsID = newArr2;
       }
     },
     deleteProduct: (state, action) => {
@@ -38,6 +42,10 @@ export const CartSlice = createSlice({
         return item.id !== action.payload.id;
       });
       state.selectedProducts = newArr;
+      const newArr2 = state.selectedProductsID.filter((id) => {
+        return id !== action.payload.id;
+      });
+      state.selectedProductsID = newArr2;
     },
   },
 });
