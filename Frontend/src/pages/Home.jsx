@@ -13,11 +13,13 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import { useGetProductByNameQuery } from "../redux/ProductAPI";
 import "./Home.css";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../redux/CartSlice";
 
 export default function Home() {
-  const { data, error, isLoading } =
-    useGetProductByNameQuery("bulbasaur");
+  const { data, error, isLoading } = useGetProductByNameQuery("bulbasaur");
   const theme = useTheme();
+  const dispatch = useDispatch();
 
   if (error) {
     return (
@@ -29,7 +31,11 @@ export default function Home() {
           {error?.data?.message ||
             "Please check your internet connection or try again later."}
         </Typography>
-        <Button variant="contained" color="primary" onClick={() => window.location.reload()}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => window.location.reload()}
+        >
           Try again
         </Button>
       </Box>
@@ -80,6 +86,9 @@ export default function Home() {
                   sx={{ textTransform: "capitalize", p: 1, lineHeight: 1.1 }}
                   variant="contained"
                   color="primary"
+                  onClick={() => {
+                    dispatch(addProduct(item));
+                  }}
                 >
                   Add to cart
                 </Button>

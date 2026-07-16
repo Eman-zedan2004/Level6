@@ -12,7 +12,13 @@ import {
 } from "@mui/material";
 import "./Cart.css";
 import { Add, Delete, Remove } from "@mui/icons-material";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {
+  decreaseQuantity,
+  deleteProduct,
+  increaseQuantity,
+} from "../redux/CartSlice";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -29,19 +35,18 @@ export default function Card() {
     <Box>
       {selectedProducts.map((item) => {
         return (
-          <Paper dir="rtl" className="item-container">
+          <Paper key={item.id} dir="rtl" className="item-container">
             <div className="img-title-parent">
-              <img
-                src={item.imageLink}
-                alt=""
-              />
+              <img src={item.imageLink} alt="" />
               <p className="product-name">{item.productName}</p>
             </div>
 
             <div style={{ display: "flex", alignItems: "center" }}>
               <IconButton
                 sx={{ color: "#1976d2", ml: "10px" }}
-                onClick={() => {}}
+                onClick={() => {
+                  dispatch(increaseQuantity(item));
+                }}
               >
                 <Add />
               </IconButton>
@@ -50,7 +55,9 @@ export default function Card() {
 
               <IconButton
                 sx={{ color: "#1976d2", mr: "10px" }}
-                onClick={() => {}}
+                onClick={() => {
+                  dispatch(decreaseQuantity(item));
+                }}
               >
                 <Remove />
               </IconButton>
@@ -62,6 +69,9 @@ export default function Card() {
               sx={{ display: { xs: "none", md: "inline-flex" } }}
               variant="text"
               color="error"
+              onClick={() => {
+                dispatch(deleteProduct(item));
+              }}
             >
               delete
             </Button>
@@ -71,7 +81,9 @@ export default function Card() {
                 color: "#ef5350",
                 display: { xs: "inline-flex", md: "none" },
               }}
-              onClick={() => {}}
+              onClick={() => {
+                dispatch(deleteProduct(item));
+              }}
             >
               <Delete />
             </IconButton>
