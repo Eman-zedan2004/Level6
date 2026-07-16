@@ -4,10 +4,13 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
+import { useGetProductByNameQuery } from "../redux/ProductAPI";
 
 const receviedDateFromAPI = [{}, {}, {}, {}];
 
 export default function Home() {
+  const { data, error, isLoading } = useGetProductByNameQuery("bulbasaur");
+  console.log(data);
   const theme = useTheme();
 
   return (

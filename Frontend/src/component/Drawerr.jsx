@@ -99,6 +99,7 @@ export default function Drawerr({
         {myList.map((item) => {
           return (
             <ListItem
+              key={item.path}
               sx={{
                 bgcolor:
                   currentLocation.pathname === item.path
