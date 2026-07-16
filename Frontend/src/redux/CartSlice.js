@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   selectedProducts: [],
+  selectedProductsID: [],
 };
 
 export const CartSlice = createSlice({
@@ -12,6 +13,7 @@ export const CartSlice = createSlice({
     addProduct: (state, action) => {
       const productAndQuantity = { ...action.payload, quantity: 1 };
       state.selectedProducts.push(productAndQuantity);
+      state.selectedProductsID.push(action.payload.id);
     },
     increaseQuantity: (state, action) => {
       const increaseProduct = state.selectedProducts.find((item) => {

@@ -19,11 +19,10 @@ import { addProduct } from "../redux/CartSlice";
 import { Add, Remove } from "@mui/icons-material";
 import { decreaseQuantity, increaseQuantity } from "../redux/CartSlice";
 import { styled, Badge } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
-    backgroundColor: "#1976d2",
-    color: "#fff",
   },
 }));
 
@@ -31,6 +30,7 @@ export default function Home() {
   const { data, error, isLoading } = useGetProductByNameQuery("bulbasaur");
   const theme = useTheme();
   const dispatch = useDispatch();
+  const { selectedProducts, selectedProductsID } = useSelector((state) => state.cartt);
 
   if (error) {
     return (
@@ -67,7 +67,7 @@ export default function Home() {
         direction={"row"}
         sx={{ flexWrap: "wrap", justifyContent: "center" }}
       >
-        {data.map((item) => {
+        {data.map((item, index) => {
           return (
             <Card
               className="card"
@@ -93,13 +93,14 @@ export default function Home() {
                 sx={{ justifyContent: "space-between" }}
                 disableSpacing
               >
-                {true ? (
+                {selectedProductsID.includes(item.id) ? (
                   <div
                     dir="rtl"
                     style={{ display: "flex", alignItems: "center" }}
                   >
                     <IconButton
-                      sx={{ color: "#1976d2", ml: "10px" }}
+                      sx={{ ml: "10px" }}
+                      color="primary"
                       onClick={() => {
                         dispatch(increaseQuantity(item));
                       }}
@@ -107,10 +108,11 @@ export default function Home() {
                       <Add fontSize="small" />
                     </IconButton>
 
-                    <StyledBadge badgeContent="1" color="secondary" />
+                    <StyledBadge badgeContent={selectedProducts[index].quantity} color="primary" />
 
                     <IconButton
-                      sx={{ color: "#1976d2", mr: "10px" }}
+                      sx={{ mr: "10px" }}
+                      color="primary"
                       onClick={() => {
                         dispatch(decreaseQuantity(item));
                       }}
