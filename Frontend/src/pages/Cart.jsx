@@ -30,10 +30,12 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 export default function Card() {
   const { selectedProducts } = useSelector((state) => state.cartt);
   const dispatch = useDispatch();
+  let totalPrice = 0;
 
   return (
     <Box>
       {selectedProducts.map((item) => {
+        totalPrice += Number(item.price) * Number(item.quantity);
         return (
           <Paper key={item.id} dir="rtl" className="item-container">
             <div className="img-title-parent">
@@ -63,7 +65,7 @@ export default function Card() {
               </IconButton>
             </div>
 
-            <div className="price">${item.price}</div>
+            <div className="price">${Number(item.price) * Number(item.quantity)}</div>
 
             <Button
               sx={{ display: { xs: "none", md: "inline-flex" } }}
@@ -103,7 +105,7 @@ export default function Card() {
           direction={"row"}
         >
           <Typography variant="body1">Subtotal</Typography>
-          <Typography variant="body1">$100</Typography>
+          <Typography variant="body1">${totalPrice}</Typography>
         </Stack>
 
         <Divider />
