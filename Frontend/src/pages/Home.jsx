@@ -20,6 +20,7 @@ import { Add, Remove } from "@mui/icons-material";
 import { decreaseQuantity, increaseQuantity } from "../redux/CartSlice";
 import { styled, Badge } from "@mui/material";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {},
@@ -38,6 +39,7 @@ export default function Home() {
     });
     return myProduct.quantity;
   };
+  const navigate = useNavigate();
 
   if (error) {
     return (
@@ -90,6 +92,9 @@ export default function Home() {
                 height="277"
                 image={item.imageLink}
                 alt="Paella dish"
+                onClick={() => {
+                navigate(`product-details/${item.id}`)
+                }}
               />
               <CardContent>
                 <Typography variant="body2" color="text.secondary">
