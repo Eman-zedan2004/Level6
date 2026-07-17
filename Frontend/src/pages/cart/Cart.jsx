@@ -18,7 +18,7 @@ import {
   decreaseQuantity,
   deleteProduct,
   increaseQuantity,
-} from "../redux/CartSlice";
+} from "../../redux/CartSlice";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {

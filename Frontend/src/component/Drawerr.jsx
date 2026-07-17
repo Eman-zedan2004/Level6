@@ -46,7 +46,7 @@ export default function Drawerr({
     {
       text: "Cart",
       icon: (
-        <StyledBadge badgeContent={selectedProducts.length} color="secondary">
+        <StyledBadge badgeContent={selectedProducts.length} color="primary">
           <ShoppingCart />
         </StyledBadge>
       ),
@@ -106,8 +106,7 @@ export default function Drawerr({
               sx={{
                 bgcolor:
                   currentLocation.pathname === item.path
-                    ? // @ts-ignore
-                      theme.palette.favColor.main
+                    ? theme.palette.favColor.main
                     : null,
               }}
               disablePadding
@@ -117,7 +116,7 @@ export default function Drawerr({
                   navigate(item.path);
                 }}
               >
-                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemIcon sx={{mr: 2}}>{item.icon}</ListItemIcon>
                 <ListItemText primary={item.text} />
               </ListItemButton>
             </ListItem>

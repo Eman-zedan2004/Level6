@@ -1,7 +1,7 @@
 import NotFound from "pages/NotFound";
 import Root from "pages/Root";
-import Home from "pages/Home";
-import Cart from "pages/Cart";
+import Home from "pages/home/Home";
+import Cart from "pages/cart/Cart";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import { Store } from "./redux/Store";
-import ProductDetails from "pages/ProductDetails";
+import ProductDetails from "pages/details/ProductDetails";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
