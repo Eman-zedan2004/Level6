@@ -1,0 +1,68 @@
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.notfound-page.mainbox {
+  background-color: #1a252f; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999; 
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nunito Sans", sans-serif;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+.notfound-page .error-number-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.notfound-page .err, 
+.notfound-page .err2 {
+  font-size: 13rem; 
+  font-weight: 900;
+  line-height: 1;
+}
+
+.notfound-page .mui-spin-icon {
+  animation: spin 4s linear infinite;
+}
+
+.notfound-page .msg {
+  text-align: center;
+  font-size: 1.6rem;
+  max-width: 650px;
+  line-height: 1.7;
+  padding: 0 20px;
+}
+
+.notfound-page .msg p {
+  margin-top: 25px;
+}
+
+.notfound-page .link {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  border-bottom: 2px solid transparent; 
+  padding-bottom: 2px;
+  margin: 0 2px;
+  transition: all 0.2s ease-in-out;
+}
+
+.notfound-page .link:hover {
+  color: #2196f3; 
+  border-bottom-color: #2196f3; 
+}
