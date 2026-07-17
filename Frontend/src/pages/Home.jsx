@@ -27,7 +27,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function Home() {
-  const { data, error, isLoading } = useGetProductByNameQuery("bulbasaur");
+  const { data, error, isLoading } = useGetProductByNameQuery();
   const theme = useTheme();
   const dispatch = useDispatch();
   const { selectedProducts, selectedProductsID } = useSelector(
