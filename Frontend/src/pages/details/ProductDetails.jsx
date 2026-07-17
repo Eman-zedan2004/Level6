@@ -2,9 +2,28 @@
 import { useParams } from "react-router-dom";
 import { useGetOneProductByNameQuery } from "../../redux/ProductAPI";
 import "./ProductDetails.css";
-import { Box, Button, CircularProgress, Typography } from "@mui/material";
+import {
+  Badge,
+  Box,
+  Button,
+  CircularProgress,
+  IconButton,
+  styled,
+  Typography,
+} from "@mui/material";
 import { useRef, useState } from "react";
 import DetailsThumb from "./DetailsThumb";
+import { useDispatch, useSelector } from "react-redux";
+import { Add, Remove } from "@mui/icons-material";
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  addProduct,
+} from "../../redux/CartSlice";
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {},
+}));
 
 export default function ProductDetails() {
   let { id } = useParams();
@@ -20,6 +39,17 @@ export default function ProductDetails() {
     }
     images[index].className = "active";
   };
+  const { selectedProducts, selectedProductsID } = useSelector(
+    (state) => state.cartt,
+  );
+  const productQuantity = (item) => {
+    const myProduct = selectedProducts.find((itemUser) => {
+      return itemUser.id === item.id;
+    });
+    return myProduct.quantity;
+  };
+
+  const dispatch = useDispatch();
 
   if (error) {
     return (
@@ -65,7 +95,8 @@ export default function ProductDetails() {
               <h2>{data.productName}</h2>
               <span>${data.price}</span>
             </div>
-            {/* <Colors colors={item.colors} /> */}
+
+            {/* <Colors colors={data.colors} /> */}
 
             <p>{data.description}</p>
 
@@ -74,7 +105,47 @@ export default function ProductDetails() {
               tab={handleTab}
               myRef={myRef}
             />
-            <button className="cart">Add to cart</button>
+
+            {selectedProductsID.includes(data.id) ? (
+              <div style={{ display: "flex", alignItems: "center", marginTop: "30px" }}>
+                <IconButton
+                  sx={{ mr: "10px" }}
+                  color="primary"
+                  onClick={() => {
+                    dispatch(decreaseQuantity(data));
+                  }}
+                >
+                  <Remove fontSize="small" />
+                </IconButton>
+
+                <StyledBadge
+                  badgeContent={productQuantity(data)}
+                  color="primary"
+                />
+
+                <IconButton
+                  sx={{ ml: "10px" }}
+                  color="primary"
+                  onClick={() => {
+                    dispatch(increaseQuantity(data));
+                  }}
+                >
+                  <Add fontSize="small" />
+                </IconButton>
+              </div>
+            ) : (
+              <Button
+                className="cart"
+                sx={{ textTransform: "capitalize", p: 1, lineHeight: 1.1 }}
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  dispatch(addProduct(data));
+                }}
+              >
+                Add to cart
+              </Button>
+            )}
           </div>
         </div>
       </div>
