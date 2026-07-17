@@ -22,15 +22,22 @@ import { styled, Badge } from "@mui/material";
 import { useSelector } from "react-redux";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-  },
+  "& .MuiBadge-badge": {},
 }));
 
 export default function Home() {
   const { data, error, isLoading } = useGetProductByNameQuery("bulbasaur");
   const theme = useTheme();
   const dispatch = useDispatch();
-  const { selectedProducts, selectedProductsID } = useSelector((state) => state.cartt);
+  const { selectedProducts, selectedProductsID } = useSelector(
+    (state) => state.cartt,
+  );
+  const productQuantity = (item) => {
+    const myProduct = selectedProducts.find((itemUser) => {
+      return itemUser.id === item.id;
+    });
+    return myProduct.quantity;
+  };
 
   if (error) {
     return (
@@ -108,7 +115,10 @@ export default function Home() {
                       <Add fontSize="small" />
                     </IconButton>
 
-                    <StyledBadge badgeContent={selectedProducts[index].quantity} color="primary" />
+                    <StyledBadge
+                      badgeContent={productQuantity(item)}
+                      color="primary"
+                    />
 
                     <IconButton
                       sx={{ mr: "10px" }}
