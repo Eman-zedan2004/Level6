@@ -39,7 +39,7 @@ export default function Card() {
         return (
           <Paper key={item.id} dir="rtl" className="item-container">
             <div className="img-title-parent">
-              <img src={item.imageLink} alt="" />
+              <img src={item.imageLink[0]} alt="" />
               <p className="product-name">{item.productName}</p>
             </div>
 
