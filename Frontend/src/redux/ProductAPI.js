@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 //GET ALL PRODUCT
 export const ProductAPI = createApi({
   reducerPath: 'ProductAPI',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://level6-ymei.onrender.com/' }),
   endpoints: (builder) => ({
     getProductByName: builder.query({
       query: (name) => `products`,
@@ -13,10 +13,9 @@ export const ProductAPI = createApi({
   }),
 })
 //GET ONE PRODUCT
-// 'https://level6-ymei.onrender.com/'
 export const oneProductAPI = createApi({
   reducerPath: 'oneProductAPI',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://level6-ymei.onrender.com/' }),
   endpoints: (builder) => ({
     getOneProductByName: builder.query({
       query: (name) => `products/${name}`,
