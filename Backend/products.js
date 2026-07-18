@@ -6,11 +6,12 @@ const products = [
       "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
     price: 100,
     imageLink: [
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784188874/5004c5c6a291bcbfa4cb4652a48a4349_ii10lv.jpg",
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784188803/9e420ba8-e66c-4046-9d3d-4384ec9bf3fa.03f59da0e2ad9c339c4ed2c4305e56ac_q6gehf.jpg",
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784188777/images_tuq87v.jpg",
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784296036/images_1_wldysu.jpg",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370769/Mens_NASA_Space_Bear_Print_O-Neck_Casual_Loose_Short_Sleeve_T-Shirt_wq4jvl.png",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370763/NASA_Space_Bear_Print_T-Shirt_welss3.jpg",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370759/Mens_NASA_Space_Bear_Print_O-Neck_Casual_Loose_Short_Sleeve_T-Shirt_ham6qc.jpg",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370756/Mens_NASA_Space_Bear_Print_O-Neck_Casual_Loose_Short_Sleeve_T-Shirt_1_g05l6f.jpg",
     ],
+    colors: ["#e6dcbf", "#1a1a1a", "#c5c9cd", "#ffffff"],
   },
   {
     id: 2,
@@ -19,11 +20,12 @@ const products = [
       "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
     price: 200,
     imageLink: [
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784189256/images_4_u7kaz5.jpg",
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784189269/il_1588xN.5760260156_mhia_wdy6pb.webp",
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784189255/images_5_qraqwb.jpg",
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784189258/images_2_xmtetx.jpg",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370876/164802324294a9e00cd18e3bdacdb07faadc6ea08e_thumbnail_900x_ieemml.webp",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370782/1646271078e49bf65969984162cd89e52f225c1251_thumbnail_900x_vhwei6.webp",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370769/16480232420809ac54cac58a758d88fbee070f7f7a_thumbnail_900x_qfzzrc.webp",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370766/1648023235ba32327d7aecda5b9de9913efa316d9e_thumbnail_900x_hv6png.webp",
     ],
+    colors: ["#b2d8d1", "#e6dcbf", "#1a1a1a", "#8b2635"],
   },
   {
     id: 3,
@@ -32,11 +34,12 @@ const products = [
       "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
     price: 300,
     imageLink: [
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784189497/il_fullxfull.7127069474_7zt7_vekeam.webp",
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784189491/il_340x270.7127069850_kkuj_siygx8.webp",
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784189489/images_3_envvws.jpg",
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784189489/images_6_b6496t.jpg",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370747/Paper_Plane_of_Liberty_Print_Crew_Neck_Short_Sleeve_T-Shirts_-_Black___XL_a3caei.png",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370754/Paper_Plane_of_Liberty_Print_Crew_Neck_Short_Sleeve_T-Shirts_-_Khaki___XL_xbwypa.png",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370754/Paper_Plane_of_Liberty_Print_Crew_Neck_Short_Sleeve_T-Shirts_-_Grey___XL_pk16yv.png",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370758/Paper_Plane_of_Liberty_Print_Crew_Neck_Short_Sleeve_T-Shirts_-_White___XL_acax3j.png",
     ],
+    colors: ["#1a1a1a", "#e6dcbf", "#c5c9cd", "#ffffff"],
   },
   {
     id: 4,
@@ -45,11 +48,12 @@ const products = [
       "Lorem ipsum, dolor sit amet consectetur adipisicing elite. Sequi, perferendis beatae asperiores.",
     price: 400,
     imageLink: [
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784189927/28d7e4_e9ab0a73d8f24a0ab192b249fb01a18a_mv2_vfjxl0.avif",
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784189923/28d7e4_060b1a6eb9714802b9727d5ade69516b_mv2_me1el3.avif",
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784189921/28d7e4_25764946bfe740ddadbb07f249da51e5_mv2_nbpwt5.avif",
-      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784189919/28d7e4_408200d849504fac8d031c3ce28ecc50_mv2_dzdsfk.avif",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370884/1646880634f3ecf23038717f7adbcf3658effab2e7_thumbnail_900x_ho6vzk.webp",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370888/164430580182db3b5a5192e660a87c832a397044b6_thumbnail_900x_bpjxky.webp",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370885/163826656927114e9da27ea115f55404141ba11264_thumbnail_900x_gqp8mu.webp",
+      "https://res.cloudinary.com/kpbimd3b/image/upload/v1784370889/1646822799c97e5f9754d3b3314b4e6ffd848ad22d_thumbnail_900x_tcfv8m.webp",
     ],
+    colors: ["#8b2635", "#e6dcbf", "#1a1a1a", "#b2d8d1"],
   },
 ];
 module.exports = products;
