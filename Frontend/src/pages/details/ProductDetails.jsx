@@ -20,6 +20,7 @@ import {
   increaseQuantity,
   addProduct,
 } from "../../redux/CartSlice";
+import Colors from "./Colors";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {},
@@ -31,13 +32,21 @@ export default function ProductDetails() {
   const { data, error, isLoading } = useGetOneProductByNameQuery(parseID);
   const [index, setIndex] = useState(0);
   const myRef = useRef(null);
+  const colorRef = useRef(null);
   const handleTab = (index) => {
     setIndex(index);
+
     const images = myRef.current.children;
     for (let i = 0; i < images.length; i++) {
       images[i].className = images[i].className.replace("active", "");
     }
     images[index].className = "active";
+
+    const colorButton = colorRef.current.children;
+    for (let i = 0; i < colorButton.length; i++) {
+      colorButton[i].className = colorButton[i].className.replace("active", "");
+    }
+    colorButton[index].className = "active";
   };
   const { selectedProducts, selectedProductsID } = useSelector(
     (state) => state.cartt,
@@ -96,7 +105,7 @@ export default function ProductDetails() {
               <span>${data.price}</span>
             </div>
 
-            {/* <Colors colors={data.colors} /> */}
+            <Colors colors={data.colors} tab={handleTab} colorRef={colorRef} />
 
             <p>{data.description}</p>
 
@@ -107,7 +116,13 @@ export default function ProductDetails() {
             />
 
             {selectedProductsID.includes(data.id) ? (
-              <div style={{ display: "flex", alignItems: "center", marginTop: "30px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginTop: "30px",
+                }}
+              >
                 <IconButton
                   sx={{ mr: "10px" }}
                   color="primary"

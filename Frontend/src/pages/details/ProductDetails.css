@@ -49,12 +49,18 @@
 }
 
 .details-page .box .colors button {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border: 1px solid #333;
   outline: none;
   margin-right: 5px;
   cursor: pointer;
+  border-radius: 50%;
+}
+
+.details-page .box .colors button.active {
+  border: 2px solid lightseagreen;
+  transform: scale(1.1);
 }
 
 .details-page .box p {
